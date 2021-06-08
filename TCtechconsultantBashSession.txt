@@ -1,0 +1,29 @@
+wrath@Wrathsgold:~$ cd ~/Downloads
+wrath@Wrathsgold:~/Downloads$ cat Users.txt | tr -s '[:blank:]' ',' > Users.csv
+wrath@Wrathsgold:~/Downloads$ dir
+code_1.56.2-1620838498_amd64.deb
+emails.txt
+GenerateMuniPayReceipt.pdf
+Jupyter_Notebook.ipynb
+Piano
+PTCA.py
+TechConsultantAssignment\ (1).ipynb
+TechConsultantAssignment.ipynb
+Users.csv
+Users.txt
+wrath@Wrathsgold:~/Downloads$ cat emails.txt | tr -s '[:blank:]' ',' > emails.csv
+wrath@Wrathsgold:~/Downloads$ dir
+code_1.56.2-1620838498_amd64.deb
+emails.csv
+emails.txt
+GenerateMuniPayReceipt.pdf
+Jupyter_Notebook.ipynb
+Piano
+PTCA.py
+TechConsultantAssignment\ (1).ipynb
+TechConsultantAssignment.ipynb
+Users.csv
+Users.txt
+wrath@Wrathsgold:~/Downloads$ join -t, <(sort -t, -k1 emails.csv) <(sort -t, -k1 Users.csv) > usersMerged.csv
+wrath@Wrathsgold:~/Downloads$ curl -F --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d 'aid=o1sRRZSLlw&api_token=zziNT81wShznajW2BD5eLA4VCkmNJ88Guye7Sw4D&data=usersMerged.csv' 'https://sandbox.tinypass.com/api/v3/publisher/user/create'
+Warning: Illegally formatted input field!
